@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create a slider using JavaScript</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #333;
+        color: #fff;
+      }
+
+      .slider-container {
+        text-align: center;
+      }
+
+      .slider {
+        position: relative;
+        width: 80%;
+        margin: 20px auto;
+        overflow: hidden;
+        background: #222;
+    
+      }
+
+      .slider-wrapper {
+        display: flex;
+        transition: transform 0.5s ease;
+      }
+
+      .slide {
+        min-width: 100%;
+        height: 200px;
+      }
+
+      .yellow {
+        background: #f1c40f;
+      }
+      .red {
+        background: #e74c3c;
+      }
+      .blue {
+        background: #3498db;
+      }
+      .green {
+        background: #2ecc71;
+      }
+      .cyan {
+        background: #1abc9c;
+      }
+
+      .nav {
+        background: none;
+        border: none;
+        color: #fff;
+        font-size: 2rem;
+        cursor: pointer;
+        outline: none;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        padding: 0 15px;
+      }
+
+      .prev {
+        left: 0;
+      }
+
+      .next {
+        right: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="slider-container">
+      <h1>Simple Javascript Slider</h1>
+      <h2>Created by Dropinks</h2>
+      <div class="slider">
+        <div class="slider-wrapper">
+          <div class="slide yellow"></div>
+          <div class="slide red"></div>
+          <div class="slide blue"></div>
+          <div class="slide green"></div>
+          <div class="slide cyan"></div>
+        </div>
+      </div>
+      <button class="nav prev">&larr;</button>
+      <button class="nav next">&rarr;</button>
+    </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const slides = document.querySelectorAll(".slide");
+        const prevButton = document.querySelector(".prev");
+        const nextButton = document.querySelector(".next");
+        const sliderWrapper = document.querySelector(".slider-wrapper");
+        let currentIndex = 0;
+
+        function showSlide(index) {
+          const totalSlides = slides.length;
+          if (index >= totalSlides) {
+            currentIndex = 0;
+          } else if (index < 0) {
+            currentIndex = totalSlides - 1;
+          } else {
+            currentIndex = index;
+          }
+          const translateX = -currentIndex * 100;
+          sliderWrapper.style.transform = `translateX(${translateX}%)`;
+        }
+
+        prevButton.addEventListener("click", () => {
+          showSlide(currentIndex - 1);
+        });
+
+        nextButton.addEventListener("click", () => {
+          showSlide(currentIndex + 1);
+        });
+      });
+    </script>
+  </body>
+</html>

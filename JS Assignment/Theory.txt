@@ -1,0 +1,1833 @@
+Q.1 What is JavaScript. How to use it?
+JavaScript is a versatile, high-level programming language that is commonly used in web development. It is one of the core technologies of the World Wide Web, alongside HTML and CSS. JavaScript enables interactive web pages and is an essential part of web applications. It can be used for both client-side (running in the web browser) and server-side (using environments like Node.js) development.
+
+Key Features of JavaScript:
+-Interactivity: Allows developers to create interactive web pages (e.g., forms, games, dynamic content updates).
+-Event Handling: Can respond to user actions such as clicks, form inputs, and page navigation.
+-APIs and Libraries: Extensive libraries and frameworks (e.g., React, Angular, Vue) enhance development efficiency.
+-Asynchronous Programming: Handles asynchronous operations using callbacks, promises, and async/await.
+-Cross-Platform: Runs on various platforms and devices without modification.
+-Community and Ecosystem: Large community and extensive resources including libraries, frameworks, and tools.
+
+Use of JavaScript
+------------------------
+Including JavaScript in a Web Page:
+JavaScript can be added to HTML documents either directly within the HTML file or by linking to an external JavaScript file.
+  - Inline JavaScript:
+  ------------------------
+
+<html>
+  <head>
+    <title>My Web Page</title>
+    <script>
+      // This is inline JavaScript
+      alert('Hello, world!');
+    </script>
+  </head>
+  <body>
+    <h1>Welcome to My Web Page</h1>
+  </body>
+</html>
+
+   -Internal JavaScript:
+   -----------------------
+<html>
+  <head>
+    <title>My Web Page</title>
+    <script>
+      function greet() {
+        alert('Hello, world!');
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Welcome to My Web Page</h1>
+    <button onclick="greet()">Click me</button>
+  </body>
+</html>
+
+   -External JavaScript:
+   ---------------------
+<!-- index.html -->
+<html>
+  <head>
+    <title>My Web Page</title>
+    <script src="script.js"></script>
+  </head>
+  <body>
+    <h1>Welcome to My Web Page</h1>
+    <button onclick="greet()">Click me</button>
+  </body>
+</html>
+
+javascript
+---------------
+ script.js
+ ---------
+function greet() {
+  alert('Hello, world!');
+}
+
+Q.2 How many types of Variables in JavaScript?
+JavaScript has three types of variable declarations:
+- var: Function-scoped or globally-scoped, and can be redeclared and updated.
+- let: Block-scoped and can be updated but not redeclared within the same scope.
+- const: Block-scoped, cannot be updated or redeclared within the same scope. The value assigned to a const variable cannot be changed.
+
+Q.3 Define Data Types in JavaScript?
+JavaScript has several data types:
+
+Primitive Data Types:
+---------------------
+String: Represents textual data ("Hello", 'World')
+Number: Represents both integer and floating-point numbers (42, 3.14)
+Boolean: Represents true or false values (true, false)
+Null: Represents a deliberate non-value (null)
+Undefined: Represents an uninitialized variable (undefined)
+Symbol: Represents a unique identifier (ES6)
+
+Non-Primitive Data Types:
+------------------------
+Object: Collection of properties ({ name: "Alice", age: 25 })
+Array: Ordered list of values ([1, 2, 3])
+
+Q.4 Write a mul Function Which Will Work Properly When Invoked With Following Syntax
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+function mul(a) {
+  return function(b) {
+    return function(c) {
+      return a * b * c;
+    }
+  }
+}
+
+// Usage:
+console.log(mul(2)(3)(4)); // 24
+</script>
+</body>
+</html>
+
+Q.5 What is the difference between undefined and undeclared in JavaScript?
+undefined: A variable is declared but not assigned a value. The variable exists in the scope but has no value.
+
+let x;
+console.log(x); // undefined
+
+
+Undeclared: A variable that has not been declared in any scope. Trying to access it will result in a ReferenceError.
+
+console.log(y); // ReferenceError: y is not defined
+
+Q.6 Using console.log() Print Out the Following Statements
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+console.log("The quote 'There is no exercise better for the heart than reaching down and lifting people up.' by John Holmes teaches us to help one another.");
+</script>
+</body>
+</html>
+
+
+Q.7 Check if typeof '10' is exactly equal to 10. If not, make it exactly equal.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+let value = '10';
+if (typeof value !== 'number') {
+  value = Number(value);
+}
+console.log(value); // 10
+console.log(typeof value === 'number'); // true
+</script>
+</body>
+</html>
+
+
+Q.8 Write a JavaScript Program to Find the Area of a Triangle
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+function triangleArea(base, height) {
+  return (base * height) / 2;
+}
+
+// Example :
+let base = 5;
+let height = 10;
+console.log(`The area of the triangle is ${triangleArea(base, height)}`);
+
+// output - The area of the triangle is 25
+</script>
+</body>
+</html>
+
+Q.9 Write a JavaScript Program to Calculate Days Left Until Next Christmas
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+function daysUntilChristmas() {
+  const today = new Date();
+  const year = today.getFullYear();
+  const nextChristmas = new Date(year, 11, 25); // December 25 of the current year
+
+  if (today > nextChristmas) {
+    nextChristmas.setFullYear(year + 1); // Set to next year if today is past Christmas
+  }
+
+  const oneDay = 24 * 60 * 60 * 1000; // One day in milliseconds
+  const daysLeft = Math.ceil((nextChristmas - today) / oneDay);
+
+  return daysLeft;
+}
+
+console.log(`Days left until next Christmas: ${daysUntilChristmas()}`);
+
+</script>
+</body>
+</html>
+
+Q.10 What is a Condition Statement?
+A conditional statement is used to perform different actions based on different conditions. Common conditional statements in JavaScript include if, else if, else, and switch.
+
+Example:
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+let age = 18;
+
+if (age < 18) {
+  console.log('You are a minor.');
+} else if (age >= 18 && age < 65) {
+  console.log('You are an adult.');
+} else {
+  console.log('You are a senior.');
+} 
+</script>
+</body>
+</html>
+
+Q.11 Find the Circumference of a Rectangle Formula: C = 4 * a
+The formula provided seems incorrect for a rectangle. Typically, the circumference (or perimeter) of a rectangle is given by:
+
+C=2×(length+width)
+
+However, if a represents the side of a square, then the formula for the perimeter (circumference) of a square is: C=4×a
+
+Example:
+
+javascript
+----------------
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+let side = 5;
+let circumference = 4 * side;
+console.log(`The circumference of the square is ${circumference}`); 
+</script>
+</body>
+</html>
+output - The circumference of the square is 20
+
+Q.12 Write a Program to Convert Years into Days and Days into Years
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+function yearsToDays(years) {
+  return years * 365;
+}
+
+function daysToYears(days) {
+  return days / 365;
+}
+
+// Example :
+let years = 5;
+let days = 1825;
+
+console.log(`${years} years is ${yearsToDays(years)} days`); // output - 5 years is 1825 days
+console.log(`${days} days is ${daysToYears(days)} years`); // 1825 days is 5 years
+</script>
+</body>
+</html>
+
+Q.13 Convert Temperature from Fahrenheit to Celsius
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+function fahrenheitToCelsius(fahrenheit) {
+  return (fahrenheit - 32) * 5 / 9;
+}
+
+// Example usage:
+let fahrenheit = 98.6;
+let celsius = fahrenheitToCelsius(fahrenheit);
+console.log(`${fahrenheit}°F is ${celsius.toFixed(2)}°C`); // 98.6°F is 37.00°C
+</script>
+</body>
+</html>
+
+Q.14 Write a JavaScript Exercise to Get the Extension of a Filename
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+function getFileExtension(filename) {
+  return filename.split('.').pop();
+}
+
+// Example usage:
+console.log(getFileExtension("document.pdf")); // "pdf"
+console.log(getFileExtension("archive.tar.gz")); // "gz"
+console.log(getFileExtension("image.jpeg")); // "jpeg
+</script>
+</body>
+</html>
+
+Q.15 What is the Result of the Expression (5 > 3 && 2 < 4)?
+The result is true because both conditions are true:
+
+5 > 3 is true
+2 < 4 is true
+-------------------------
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+console.log(5 > 3 && 2 < 4);
+</script>
+</body>
+</html>
+
+Q.16 What is the Result of the Expression (true && 1 && "hello")?
+The result is "hello" because in JavaScript, && returns the last truthy value if all operands are truthy.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+console.log(true && 1 && "hello"); // "hello"
+</script>
+</body>
+</html>
+
+Q.17 What is the Result of the Expression (true && false || false && true)?
+The result is false because && has higher precedence than ||.
+
+true && false is false
+false && true is false
+false || false is false
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+console.log(true && false || false && true); // false
+</script>
+</body>
+</html>
+
+Q.18 What is a Loop and Switch Case in JavaScript Define That?
+
+Loop:- A loop is a control structure that repeatedly executes a block of code as long as a specified condition is true.
+
+Example of a for loop:
+----------------------
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+for (let i = 0; i < 5; i++) {
+  console.log(i);
+}
+</script>
+</body>
+</html>
+// Outputs: 0, 1, 2, 3, 4
+
+Example of a while loop:
+-----------------------
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+let i = 0;
+while (i < 5) {
+  console.log(i);
+  i++;
+}
+</script>
+</body>
+</html>
+// Outputs: 0, 1, 2, 3, 4
+
+
+Switch Case:- A switch statement evaluates an expression, matching the expression's value to a case label, and executes associated statements.
+
+Example:
+--------
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+let day = 3;
+switch (day) {
+  case 1:
+    console.log("Monday");
+    break;
+  case 2:
+    console.log("Tuesday");
+    break;
+  case 3:
+    console.log("Wednesday");
+    break;
+  case 4:
+    console.log("Thursday");
+    break;
+  case 5:
+    console.log("Friday");
+    break;
+  case 6:
+    console.log("Saturday");
+    break;
+  case 7:
+    console.log("Sunday");
+    break;
+  default:
+    console.log("Invalid day");
+}
+</script>
+</body>
+</html>
+// Outputs: Wednesday
+
+Q.19 What is the Use of isNaN Function?
+The isNaN function determines whether a value is NaN (Not-a-Number). It converts the value to a number if necessary and returns true if the resulting value is NaN, otherwise false.
+
+Example:
+--------
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+console.log(isNaN("123")); // false
+console.log(isNaN("Hello")); // true
+console.log(isNaN(123)); // false
+console.log(isNaN(NaN)); // true
+</script>
+</body>
+</html>
+
+
+Q.20 What is the Difference Between && and || in JavaScript?
+&& (Logical AND): Returns the first falsy value or the last value if all are truthy.
+---------------
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+console.log(true && false); // false
+console.log(true && 1 && "hello"); // "hello"
+</script>
+</body>
+</html>
+
+|| (Logical OR): Returns the first truthy value or the last value if all are falsy.
+---------------
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+console.log(false || true); // true
+console.log(null || 0 || "hi"); // "hi"
+</script>
+</body>
+</html>
+
+
+Q.21 What is the Use of void (0)?
+The void operator evaluates the given expression and returns undefined. It is often used to prevent the default action of a hyperlink in an onclick event.
+
+Example:
+--------
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+<a href="javascript:void(0);" onclick="alert('This link does nothing')">Click me</a>
+</script>
+</body>
+</html>
+
+Q.22 Check if a Number is Positive or Negative in JavaScript
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+  function checkNumber(num) {
+  if (num > 0) {
+    return "Positive";
+  } else if (num < 0) {
+    return "Negative";
+  } else {
+    return "Zero";
+  }
+}
+
+// Example usage:
+console.log(checkNumber(5)); // "Positive"
+console.log(checkNumber(-3)); // "Negative"
+console.log(checkNumber(0)); // "Zero"
+</script>
+</body>
+</html>
+
+Q.23 Find if the Character is a Vowel or Not
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+ function isVowel(char) {
+  const vowels = "aeiouAEIOU";
+  return vowels.includes(char);
+}
+
+// Example usage:
+console.log(isVowel('a')); // true
+console.log(isVowel('b')); // false
+console.log(isVowel('E')); // true
+</script>
+</body>
+</html>
+
+Q.24 Write to Check Whether a Number is Negative, Positive, or Zero
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+ function checkNumber(num) {
+  if (num > 0) {
+    return "Positive";
+  } else if (num < 0) {
+    return "Negative";
+  } else {
+    return "Zero";
+  }
+}
+
+// Example usage:
+console.log(checkNumber(5)); // "Positive"
+console.log(checkNumber(-3)); // "Negative"
+console.log(checkNumber(0)); // "Zero"
+</script>
+</body>
+</html>
+
+Q.25 Write to Find if a Number is Even or Odd Using Ternary Operator in JS
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+ function isEvenOrOdd(num) {
+  return num % 2 === 0 ? "Even" : "Odd";
+}
+
+// Example usage:
+console.log(isEvenOrOdd(4)); // "Even"
+console.log(isEvenOrOdd(7)); // "Odd"
+</script>
+</body>
+</html>
+
+Q.26 Write to Find Maximum Number Among 3 Numbers Using Ternary Operator in JS
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+ function maxOfThree(a, b, c) {
+  return a > b ? (a > c ? a : c) : (b > c ? b : c);
+}
+
+// Example usage:
+console.log(maxOfThree(3, 7, 5)); // 7
+console.log(maxOfThree(10, 2, 8)); // 10
+console.log(maxOfThree(1, 9, 9)); // 9
+</script>
+</body>
+</html>
+
+Q.27 Write to Find Minimum Number Among 3 Numbers Using Ternary Operator in JS
+
+To find the minimum number among three numbers using the ternary operator in JavaScript, you can use nested ternary operators. Here's the solution:
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+ function minOfThree(a, b, c) {
+  return a < b ? (a < c ? a : c) : (b < c ? b : c);
+}
+
+// Example usage:
+console.log(minOfThree(3, 7, 5)); // 3
+console.log(minOfThree(10, 2, 8)); // 2
+console.log(minOfThree(1, 9, 0)); // 0
+</script>
+</body>
+</html>
+
+Q.28 Write to Find the Largest of Three Numbers in JS
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+ function largestOfThree(a, b, c) {
+  if (a >= b && a >= c) {
+    return a;
+  } else if (b >= a && b >= c) {
+    return b;
+  } else {
+    return c;
+  }
+}
+
+// Example usage:
+console.log(largestOfThree(3, 7, 5)); // 7
+console.log(largestOfThree(10, 2, 8)); // 10
+console.log(largestOfThree(1, 9, 9)); // 9
+</script>
+</body>
+</html>
+
+Q.29 Write to Show i. Monday to Sunday Using Switch Case in JS ii. Vowel or Consonant Using Switch Case in JS
+i. Monday to Sunday Using Switch Case in JS
+     <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+ function getDayName(dayNumber) {
+  switch (dayNumber) {
+    case 1:
+      return "Monday";
+    case 2:
+      return "Tuesday";
+    case 3:
+      return "Wednesday";
+    case 4:
+      return "Thursday";
+    case 5:
+      return "Friday";
+    case 6:
+      return "Saturday";
+    case 7:
+      return "Sunday";
+    default:
+      return "Invalid day number";
+  }
+}
+
+// Example usage:
+console.log(getDayName(1)); // "Monday"
+console.log(getDayName(5)); // "Friday"
+console.log(getDayName(8)); // "Invalid day number"
+</script>
+</body>
+</html>
+
+
+ii. Vowel or Consonant Using Switch Case in JS
+
+     <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+ function checkVowelOrConsonant(char) {
+  switch (char.toLowerCase()) {
+    case 'a':
+    case 'e':
+    case 'i':
+    case 'o':
+    case 'u':
+      return "Vowel";
+    default:
+      return "Consonant";
+  }
+}
+
+// Example usage:
+console.log(checkVowelOrConsonant('a')); // "Vowel"
+console.log(checkVowelOrConsonant('b')); // "Consonant"
+console.log(checkVowelOrConsonant('E')); // "Vowel"
+</script>
+</body>
+</html>
+============================================================================================
+
+
+Conditional looping logic Question
+===============================================
+Q.30 What Are the Looping Structures in JavaScript? Any One Example?
+JavaScript has several looping structures:
+
+for loop
+while loop
+do...while loop
+for...in loop (used for iterating over the properties of an object)
+for...of loop (used for iterating over iterable objects like arrays)
+
+Example of a for loop:
+---------------
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+for (let i = 0; i < 5; i++) {
+  console.log(i);
+}
+// Outputs: 0, 1, 2, 3, 4
+</script>
+</body>
+</html>
+
+
+Q.31 Write a Print 972 to 897 Using for Loop in JS
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+for (let i = 972; i >= 897; i--) {
+  console.log(i);
+}
+</script>
+</body>
+</html>
+
+Q.32 Write to Print Factorial of Given Number
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+function factorial(n) {
+  let result = 1;
+  for (let i = 1; i <= n; i++) {
+    result *= i;
+  }
+  return result;
+}
+
+// Example usage:
+console.log(factorial(5)); // 120
+console.log(factorial(7)); // 5040
+</script>
+</body>
+</html>
+
+Q.33 Write to Print Fibonacci Series up to Given Numbers
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+function fibonacciSeries(n) {
+  let fib = [0, 1];
+  for (let i = 2; i < n; i++) {
+    fib[i] = fib[i - 1] + fib[i - 2];
+  }
+  return fib.slice(0, n);
+}
+
+// Example usage:
+console.log(fibonacciSeries(10)); // [0, 1, 1, 2, 3, 5, 8, 13, 21, 34]
+</script>
+</body>
+</html>
+
+Q.34 Write to Print Number in Reverse Order (e.g., number = 64728 -> reverse = 82746) in JS
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+function reverseNumber(number) {
+  return parseInt(number.toString().split('').reverse().join(''), 10);
+}
+
+// Example usage:
+console.log(reverseNumber(64728)); // 82746
+</script>
+</body>
+</html>
+
+Q.35 Write a Program to Make a Summation of Given Number (e.g., 1523 -> 11) in JS
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+function sumOfDigits(number) {
+  return number.toString().split('').reduce((sum, digit) => sum + parseInt(digit, 10), 0);
+}
+
+// Example usage:
+console.log(sumOfDigits(1523)); // 11
+console.log(sumOfDigits(64728)); // 27
+</script>
+</body>
+</html>
+
+
+Q.36 Write a Program to Make a Summation of First and Last Digit (e.g., 1234 -> 5) in JS
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+function sumFirstAndLastDigit(number) {
+  const digits = number.toString();
+  const firstDigit = parseInt(digits[0], 10);
+  const lastDigit = parseInt(digits[digits.length - 1], 10);
+  return firstDigit + lastDigit;
+}
+
+// Example usage:
+console.log(sumFirstAndLastDigit(1234)); // 5
+console.log(sumFirstAndLastDigit(56789)); // 14
+</script>
+</body>
+</html>
+
+Q.37 Use console.log() and Escape Characters to Print the Following Pattern in JS
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+console.log("1 1 1 1 1");
+console.log("2 1 2 4 8");
+console.log("3 1 3 9 27");
+console.log("4 1 4 16 64");
+console.log("5 1 5 25 125");
+</script>
+</body>
+</html>
+
+
+Q.38 Use Pattern in console.log in JS
+
+Pattern 1:
+--------------
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+console.log("1");
+console.log("1 0");
+console.log("1 0 1");
+console.log("1 0 1 0");
+console.log("1 0 1 0 1");
+</script>
+</body>
+</html>
+
+Pattern 2:
+----------
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+let charCode = 65; // ASCII code for 'A'
+for (let i = 1; i <= 5; i++) {
+  let line = '';
+  for (let j = 0; j < i; j++) {
+    line += String.fromCharCode(charCode++) + ' ';
+  }
+  console.log(line.trim());
+}
+</script>
+</body>
+</html>
+
+
+Pattern 3:
+----------------
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+let num = 1;
+for (let i = 1; i <= 5; i++) {
+  let line = '';
+  for (let j = 0; j < i; j++) {
+    line += num++ + ' ';
+  }
+  console.log(line.trim());
+}
+
+</script>
+</body>
+</html>
+
+Pattern 4:
+----------
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+for (let i = 1; i <= 5; i++) {
+  let line = '';
+  for (let j = 0; j < i; j++) {
+    line += '* ';
+  }
+  console.log(line.trim());
+}
+</script>
+</body>
+</html>
+
+Q.39 Accept 3 Numbers from User Using while Loop and Check Each Number for Palindrome
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+function isPalindrome(number) {
+  const str = number.toString();
+  const reversedStr = str.split('').reverse().join('');
+  return str === reversedStr;
+}
+
+const prompt = require('prompt-sync')(); // Use prompt-sync for user input in Node.js
+
+let count = 0;
+const numbers = [];
+
+while (count < 3) {
+  const input = prompt(`Enter number ${count + 1}: `);
+  const number = parseInt(input, 10);
+  numbers.push(number);
+  count++;
+}
+
+numbers.forEach((number, index) => {
+  if (isPalindrome(number)) {
+    console.log(`Number ${number} is a palindrome.`);
+  } else {
+    console.log(`Number ${number} is not a palindrome.`);
+  }
+});
+</script>
+</body>
+</html>
+
+======================================================================================
+
+Array and object Question
+==========================
+
+Q.40 Write a JavaScript Program to Display the Current Day and Time in the Following Format
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+function displayCurrentDayAndTime() {
+  const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+  const now = new Date();
+  const day = days[now.getDay()];
+  let hours = now.getHours();
+  const minutes = now.getMinutes();
+  const seconds = now.getSeconds();
+  const period = hours >= 12 ? "PM" : "AM";
+
+  hours = hours % 12;
+  hours = hours ? hours : 12; // the hour '0' should be '12'
+
+  const formattedTime = `${hours} ${period} : ${minutes < 10 ? '0' + minutes : minutes} : ${seconds < 10 ? '0' + seconds : seconds}`;
+
+  console.log(`Today is ${day}. Current Time is ${formattedTime}.`);
+}
+
+displayCurrentDayAndTime();
+</script>
+</body>
+</html>
+
+
+Q.41 Write a JavaScript Program to Get the Current Date
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+function getCurrentDate() {
+  const now = new Date();
+  return now.toDateString();
+}
+
+console.log(getCurrentDate());
+</script>
+</body>
+</html>
+
+Q.42 Write a JavaScript Program to Compare Two Objects
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+function areObjectsEqual(obj1, obj2) {
+  const keys1 = Object.keys(obj1);
+  const keys2 = Object.keys(obj2);
+
+  if (keys1.length !== keys2.length) {
+    return false;
+  }
+
+  for (let key of keys1) {
+    if (obj1[key] !== obj2[key]) {
+      return false;
+    }
+  }
+
+  return true;
+}
+
+// Example usage:
+const obj1 = { name: "Alice", age: 25 };
+const obj2 = { name: "Alice", age: 25 };
+const obj3 = { name: "Bob", age: 30 };
+
+console.log(areObjectsEqual(obj1, obj2)); // true
+console.log(areObjectsEqual(obj1, obj3)); // false
+</script>
+</body>
+</html>
+
+
+Q.43 Write a JavaScript Program to Convert an Array of Objects into CSV String
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+function arrayToCSV(array) {
+  const header = Object.keys(array[0]).join(",");
+  const rows = array.map(obj => Object.values(obj).join(","));
+  return [header, ...rows].join("\n");
+}
+
+// Example usage:
+const data = [
+  { name: "Alice", age: 25, city: "New York" },
+  { name: "Bob", age: 30, city: "Los Angeles" },
+  { name: "Charlie", age: 35, city: "Chicago" }
+];
+
+console.log(arrayToCSV(data));
+</script>
+</body>
+</html>
+
+Q.44 Write a JavaScript Program to Capitalize First Letter of a String
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+function capitalizeFirstLetter(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+// Example usage:
+console.log(capitalizeFirstLetter("hello world")); // "Hello world"
+</script>
+</body>
+</html>
+
+
+Q.45 Write a JavaScript Program to Determine if a Variable is an Array
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+function isArray(variable) {
+  return Array.isArray(variable);
+}
+
+// Example usage:
+console.log(isArray([1, 2, 3])); // true
+console.log(isArray("Hello")); // false
+</script>
+</body>
+</html>
+
+
+Q.46 Write a JavaScript Program to Clone an Array
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+function cloneArray(array) {
+  return array.slice(0);
+}
+
+// Example usage:
+const originalArray = [1, 2, 3, 4];
+const clonedArray = cloneArray(originalArray);
+console.log(clonedArray); // [1, 2, 3, 4]
+</script>
+</body>
+</html>
+
+
+Q.47 What is the Drawback of Declaring Methods Directly in JavaScript Objects?
+Declaring methods directly in JavaScript objects can lead to memory inefficiency, as each instance of the object will have its own copy of the method. This is particularly problematic for objects created in large numbers.
+
+Q.48 Print the Length of the String on the Browser Console Using console.log()
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+const str = "Hello, world!";
+console.log(str.length); // 13
+</script>
+</body>
+</html>
+
+Q.49 Change All the String Characters to Capital Letters Using toUpperCase() Method
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+const str = "Hello, world!";
+const upperStr = str.toUpperCase();
+console.log(upperStr); // "HELLO, WORLD!"
+</script>
+</body>
+</html>
+
+
+Q.50 What is the Drawback of Declaring Methods Directly in JavaScript Objects?
+As mentioned in Q.47, declaring methods directly in objects results in each instance having its own copy of the method, leading to increased memory usage and potential performance issues.
+
+Q.51 Write a JavaScript Program to Get the Current Date. Expected Output: mm-dd-yyyy, mm/dd/yyyy or dd-mm-yyyy, dd/mm/yyyy
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+function formatDate(date) {
+  const dd = String(date.getDate()).padStart(2, '0');
+  const mm = String(date.getMonth() + 1).padStart(2, '0'); // January is 0!
+  const yyyy = date.getFullYear();
+
+  return {
+    "mm-dd-yyyy": `${mm}-${dd}-${yyyy}`,
+    "mm/dd/yyyy": `${mm}/${dd}/${yyyy}`,
+    "dd-mm-yyyy": `${dd}-${mm}-${yyyy}`,
+    "dd/mm/yyyy": `${dd}/${mm}/${yyyy}`
+  };
+}
+
+// Example usage:
+const currentDate = new Date();
+const formattedDate = formatDate(currentDate);
+console.log(formattedDate["mm-dd-yyyy"]);
+console.log(formattedDate["mm/dd/yyyy"]);
+console.log(formattedDate["dd-mm-yyyy"]);
+console.log(formattedDate["dd/mm/yyyy"]);
+
+</script>
+</body>
+</html>
+
+Q.52 Use indexOf to Determine the Position of the First Occurrence of a in "30 Days Of JavaScript"
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+const str = "30 Days Of JavaScript";
+const firstIndex = str.indexOf('a');
+console.log(firstIndex); // 3
+
+</script>
+</body>
+</html>
+
+
+Q.53 Use lastIndexOf to Determine the Position of the Last Occurrence of a in "30 Days Of JavaScript"
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+const str = "30 Days Of JavaScript";
+const lastIndex = str.lastIndexOf('a');
+console.log(lastIndex); // 14
+
+</script>
+</body>
+</html>
+
+Q.54 Form Validation in JS
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Form Validation</title>
+  <script>
+    function validateForm() {
+      const name = document.forms["myForm"]["name"].value;
+      const email = document.forms["myForm"]["email"].value;
+      const age = document.forms["myForm"]["age"].value;
+      if (name == "") {
+        alert("Name must be filled out");
+        return false;
+      }
+      if (email == "") {
+        alert("Email must be filled out");
+        return false;
+      }
+      if (isNaN(age) || age < 1 || age > 100) {
+        alert("Age must be a number between 1 and 100");
+        return false;
+      }
+      return true;
+    }
+  </script>
+</head>
+<body>
+  <form name="myForm" onsubmit="return validateForm()">
+    Name: <input type="text" name="name"><br>
+    Email: <input type="text" name="email"><br>
+    Age: <input type="text" name="age"><br>
+    <input type="submit" value="Submit">
+  </form>
+</body>
+</html>
+
+Q.55 Form in Email, Number, Password Validation
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Form Validation</title>
+  <script>
+    function validateForm() {
+      const email = document.forms["myForm"]["email"].value;
+      const number = document.forms["myForm"]["number"].value;
+      const password = document.forms["myForm"]["password"].value;
+      
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      const numberPattern = /^[0-9]+$/;
+      const passwordPattern = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+      
+      if (!emailPattern.test(email)) {
+        alert("Please enter a valid email address");
+        return false;
+      }
+      if (!numberPattern.test(number)) {
+        alert("Please enter a valid number");
+        return false;
+      }
+      if (!passwordPattern.test(password)) {
+        alert("Password must be at least 8 characters long and contain both letters and numbers");
+        return false;
+      }
+      
+      return true;
+    }
+  </script>
+</head>
+<body>
+  <form name="myForm" onsubmit="return validateForm()">
+    Email: <input type="text" name="email"><br>
+    Number: <input type="text" name="number"><br>
+    Password: <input type="password" name="password"><br>
+    <input type="submit" value="Submit">
+  </form>
+</body>
+</html>
+
+Q.56 Dynamic Form Validation in JS
+html
+Copy code
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dynamic Form Validation</title>
+  <script>
+    function validateField(field, pattern, message) {
+      if (!pattern.test(field.value)) {
+        field.setCustomValidity(message);
+      } else {
+        field.setCustomValidity('');
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const emailField = document.getElementById('email');
+      const numberField = document.getElementById('number');
+      const passwordField = document.getElementById('password');
+
+      emailField.addEventListener('input', () => validateField(emailField, /^[^\s@]+@[^\s@]+\.[^\s@]+$/, 'Please enter a valid email address'));
+      numberField.addEventListener('input', () => validateField(numberField, /^[0-9]+$/, 'Please enter a valid number'));
+      passwordField.addEventListener('input', () => validateField(passwordField, /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/, 'Password must be at least 8 characters long and contain both letters and numbers'));
+    });
+  </script>
+</head>
+<body>
+  <form>
+    Email: <input type="text" id="email" required><br>
+    Number: <input type="text" id="number" required><br>
+    Password: <input type="password" id="password" required><br>
+    <input type="submit" value="Submit">
+  </form>
+</body>
+</html>
+
+Q.57 How Many Types of JS Events?
+JavaScript has several types of events that can be used to interact with the DOM. Here are some of the main categories and examples of each type:
+
+*) Mouse Events:
+----- ------
+-click
+-dblclick
+-mousedown
+-mouseup
+-mousemove
+-mouseover
+-mouseout
+-mouseenter
+-mouseleave
+Example:
+ =======
+document.getElementById('myButton').addEventListener('click', function() {
+  alert('Button was clicked!');
+});
+
+*) Keyboard Events:
+ ---- --------
+-keydown
+-keypress
+-keyup
+Example:
+========
+document.addEventListener('keydown', function(event) {
+  console.log('Key pressed: ' + event.key);
+});
+
+*) Form Events:
+------------
+-submit
+-change
+-focus
+-blur
+-input
+Example:
+==============
+document.getElementById('myForm').addEventListener('submit', function(event) {
+  event.preventDefault();
+  alert('Form submitted!');
+});
+
+*)Window Events:
+---------
+load
+resize
+scroll
+unload
+Example:
+========
+window.addEventListener('resize', function() {
+  console.log('Window resized!');
+});
+
+*)Touch Events (for touch devices):
+-----------------------
+touchstart
+touchmove
+touchend
+touchcancel
+Example:
+==========
+document.addEventListener('touchstart', function() {
+  console.log('Screen touched!');
+});
+
+*)Clipboard Events:
+----------------
+copy
+cut
+paste
+
+Example:
+========
+document.addEventListener('copy', function(event) {
+  console.log('Content copied!');
+});
+
+Q.59 What is BOM vs DOM in JS?
+BOM (Browser Object Model):
+BOM represents the browser window and provides methods to interact with the browser.
+Key objects include window, navigator, screen, history, and location.
+Allows manipulation of the browser window, e.g., opening new windows, navigating history, etc.
+
+Example:
+==========
+console.log(window.location.href); // Get the current URL
+window.open('https://www.example.com', '_blank'); // Open a new window/tab
+
+DOM (Document Object Model):
+DOM represents the structure of the HTML document.
+Provides a way to access and manipulate the content, structure, and style of documents.
+Key objects include document and elements within the HTML.
+Example:
+=========
+const element = document.getElementById('myElement'); // Access an element
+element.textContent = 'Hello, World!'; // Change the content of the element
+
+Q.60 Array vs Object Differences in JS
+Array:
+=======
+Ordered collection of items, accessed by numerical indices.
+Typically used for lists of data.
+Methods include push(), pop(), shift(), unshift(), splice(), slice(), map(), filter(), reduce(), etc.
+Example:
+========
+const arr = [1, 2, 3, 4];
+console.log(arr[0]); // 1
+arr.push(5);
+console.log(arr); // [1, 2, 3, 4, 5]
+
+Object:
+=======
+Collection of key-value pairs, accessed by keys.
+Typically used for representing structured data or entities.
+Methods and properties can be defined on objects.
+
+Example:
+=========
+const obj = { name: 'Alice', age: 25 };
+console.log(obj.name); // 'Alice'
+obj.city = 'New York';
+console.log(obj); // { name: 'Alice', age: 25, city: 'New York' }
+
+
+Q.61 Split the String into an Array Using split() Method
+const str = "30 Days Of JavaScript";
+const arr = str.split(' ');
+console.log(arr); // ["30", "Days", "Of", "JavaScript"]
+
+Q.62 Check if the String Contains a Word "Script" Using includes() Method
+const str = "30 Days Of JavaScript";
+const containsScript = str.includes('Script');
+console.log(containsScript); // true
+
+Q.63 Change All the String Characters to Lowercase Letters Using toLowerCase() Method
+const str = "30 Days Of JavaScript";
+const lowerStr = str.toLowerCase();
+console.log(lowerStr); // "30 days of javascript"
+
+Q.64 What is the Character at Index 15 in "30 Days of JavaScript" String? Use charAt() Method
+const str = "30 Days of JavaScript";
+const charAt15 = str.charAt(15);
+console.log(charAt15); // 'S'
+
+Q.65 Copy One String to Another String in JS
+const originalStr = "Hello, World!";
+const copiedStr = originalStr; // Simple assignment copies the string
+console.log(copiedStr); // "Hello, World!"
+
+
+Q.66 Find the Length of a String Without Using a Library Function
+function stringLength(str) {
+  let length = 0;
+  while (str[length] !== undefined) {
+    length++;
+  }
+  return length;
+}
+
+// Example usage:
+console.log(stringLength("Hello, World!")); // 13
+
+
+.) What is JavaScript?
+JavaScript is a high-level, interpreted programming language that is commonly used to create interactive effects within web browsers. It is a core technology of the web, alongside HTML and CSS, enabling dynamic and interactive web pages.
+
+.) What is the Use of isNaN Function?
+The isNaN function checks whether a value is NaN (Not-a-Number). It is useful for validating if a value cannot be converted to a number.
+
+console.log(isNaN('123')); // false (can be converted to a number)
+console.log(isNaN('abc')); // true (cannot be converted to a number)
+
+.) What is Negative Infinity?
+Negative Infinity is a special value in JavaScript that represents a number that is less than any other number. It is the result of a negative number divided by zero.
+
+console.log(-Infinity); // -Infinity
+console.log(Number.NEGATIVE_INFINITY); // -Infinity
+
+.) Which Company Developed JavaScript?
+JavaScript was developed by Netscape Communications Corporation. Brendan Eich created JavaScript in 1995 while working at Netscape.
+
+.) What are Undeclared and Undefined Variables?
+- Undeclared Variables: Variables that have not been declared using var, let, or const. Accessing an undeclared variable will result in a reference error.
+
+console.log(x); // ReferenceError: x is not defined
+
+- Undefined Variables: Variables that have been declared but have not been assigned a value. Accessing an undefined variable returns undefined.
+let y;
+console.log(y); // undefined
+
+.) Write the Code for Adding New Elements Dynamically
+const newElement = document.createElement('div');
+newElement.textContent = 'This is a new element';
+document.body.appendChild(newElement);
+
+.) What is the Difference Between ViewState and SessionState?
+ViewState: Maintains the state of a web page and its controls between postbacks. It is stored in a hidden field on the page.
+SessionState: Maintains the state of the user's session across multiple web pages. It is stored on the server and is unique to each user session.
+
+.) What is === Operator?
+The === operator is a strict equality operator that checks both the value and the type of the operands. It only returns true if both the value and type are the same.
+console.log(5 === '5'); // false (different types)
+console.log(5 === 5); // true (same type and value)
+
+.) How Can the Style/Class of an Element be Changed?
+Changing Style:
+--------------
+const element = document.getElementById('myElement');
+element.style.color = 'red';
+
+Changing Class:
+---------
+const element = document.getElementById('myElement');
+element.className = 'newClass';
+
+.) How to Read and Write a File Using JavaScript?
+In a browser environment, you typically cannot read/write files directly due to security reasons. Instead, you use input elements and APIs like FileReader. For server-side JavaScript (Node.js), you use the fs module.
+Node.js Example:
+--------------
+const fs = require('fs');
+
+// Writing to a file
+fs.writeFileSync('example.txt', 'Hello, World!');
+
+// Reading from a file
+const data = fs.readFileSync('example.txt', 'utf8');
+console.log(data); // Hello, World!
+
+.) What are All the Looping Structures in JavaScript?
+-for loop
+-while loop
+-do...while loop
+-for...in loop (for objects)
+-for...of loop (for iterables)
+
+.) How Can You Convert the String of Any Base to an Integer in JavaScript?
+Use the parseInt function with a radix parameter.
+
+const binaryString = "1010";
+const decimalNumber = parseInt(binaryString, 2);
+console.log(decimalNumber); // 10
+
+.) What is the Function of the delete Operator?
+The delete operator removes a property from an object.
+
+const obj = { name: "Alice", age: 25 };
+delete obj.age;
+console.log(obj); // { name: "Alice" }
+
+.) What are All the Types of Popup Boxes Available in JavaScript?
+-alert box
+-confirm box
+-prompt box
+Examples:
+-------------
+alert('This is an alert box');
+const userConfirmed = confirm('Are you sure?');
+const userInput = prompt('Enter your name');
+
+.) What is the Use of void(0)?
+The void(0) expression evaluates to undefined and is often used to prevent the default behavior of a link.
+<a href="javascript:void(0);">Click here</a>
+
+.) ow Can a Page be Forced to Load Another Page in JavaScript?
+Use window.location.href to navigate to another page.
+window.location.href = 'https://www.example.com';
+
+.) What are the Disadvantages of Using innerHTML in JavaScript?
+-Can lead to security vulnerabilities like XSS (Cross-Site Scripting).
+-Removes and re-parses all child elements, which can be inefficient.
+-Does not execute embedded scripts.
